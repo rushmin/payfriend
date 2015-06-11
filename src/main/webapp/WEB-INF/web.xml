@@ -15,35 +15,37 @@
   ~ limitations under the License.
   -->
 
-<web-app version="2.5" xmlns="http://java.sun.com/xml/ns/javaee"
-         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:schemaLocation="http://java.sun.com/xml/ns/javaee 
-         http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd">
 
-    <display-name>JAX-WS/JAX-RS Webapp</display-name>
+<web-app xmlns="http://java.sun.com/xml/ns/javaee"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://java.sun.com/xml/ns/javaee
+                      http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd"
+         version="3.0"
+         metadata-complete="true">
+
+
+    <display-name>Payfriend</display-name>
+
 
     <servlet>
-        <servlet-name>JAXServlet</servlet-name>
-        <display-name>JAX-WS/JAX-RS Servlet</display-name>
-        <description>JAX-WS/JAX-RS Endpoint</description>
-        <servlet-class>
-            org.apache.cxf.transport.servlet.CXFServlet
-        </servlet-class>
+        <servlet-name>JerseyRestServlet</servlet-name>
+        <servlet-class>org.glassfish.jersey.servlet.ServletContainer</servlet-class>
         <init-param>
-            <param-name>service-list-stylesheet</param-name>
-            <param-value>servicelist.css</param-value>
+            <param-name>javax.ws.rs.Application</param-name>
+            <param-value>org.wso2.carbon.apimgt.payfriend.rest.RestApplication</param-value>
         </init-param>
-        <load-on-startup>1</load-on-startup>
+        <init-param>
+            <param-name>com.sun.jersey.api.json.POJOMappingFeature</param-name>
+            <param-value>true</param-value>
+        </init-param>
+        <!--<load-on-startup>1</load-on-startup>-->
     </servlet>
 
     <servlet-mapping>
-        <servlet-name>JAXServlet</servlet-name>
-        <url-pattern>/*</url-pattern>
+        <servlet-name>JerseyRestServlet</servlet-name>
+        <url-pattern>/api/*</url-pattern>
     </servlet-mapping>
 
-    <session-config>
-        <session-timeout>60</session-timeout>
-    </session-config>
-
 </web-app>
+
 
