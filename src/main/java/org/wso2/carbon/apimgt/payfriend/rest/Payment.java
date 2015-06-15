@@ -47,9 +47,9 @@ public class Payment {
         response.put("create_time", new Date().toString());
         response.put("update_time", new Date().toString());
         response.put("state", "approved");
-        response.put("intent", payment.get("intent"));
-        response.put("payer", getPayerForResponse(payment));
-        response.put("transactions", payment.get("transactions"));
+//        response.put("intent", payment.get("intent"));
+//        response.put("payer", getPayerForResponse(payment));
+//        response.put("transactions", payment.get("transactions"));
 
         return response;
     }
