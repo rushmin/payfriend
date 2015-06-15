@@ -47,6 +47,8 @@ public class Payment {
         response.put("create_time", new Date().toString());
         response.put("update_time", new Date().toString());
         response.put("state", "approved");
+
+        // NOTE : Commenting out to get rid of an ESB JSON data type conversion issue.
 //        response.put("intent", payment.get("intent"));
 //        response.put("payer", getPayerForResponse(payment));
 //        response.put("transactions", payment.get("transactions"));
